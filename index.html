@@ -2,7 +2,8 @@
 <html>
   <head>
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel='stylesheet' href='assets/style/main.css'>
+  	<link href='https://fonts.googleapis.com/css?family=Noto+Serif:700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='assets/style/main.css'>    
   </head>
 
   
@@ -10,10 +11,50 @@
   <body>
   
   	<!-- This will just have the Twitter Bar  -->
-  	<header>
+  	<header class='clearfix'>
+
+  		<div id='logo-wrapper'>
+	  		<a class='logo-text' href='#'>Twittler</a>
+	  		<a href=''><img class='logo' src='https://g.twimg.com/Twitter_logo_white.png' /></a>
+	  	</div>
+  		
+  		<div id='Side-Info' class='clearfix'>
+
+  			<div id='Profile'>
+  				
+  				<img src='http://whatsupintheworld.com/wp-content/uploads/2014/06/Facebook-Blank-Photo.jpg' />
+  				
+				<div id='Profile-Info'>
+					<a href=''><span>Ahad Wasim</span></a>
+					<a href=''><span>Create Tweet</span></a>
+				</div>
+  			
+  			</div>	
+
+  			<div id='url-info-wrapper'>		
+	  			<ul>
+	  				<li><a href='#'>Home</a></li>
+	  				<li><a href='#'>About</a></li>
+	  				<li><a href='#'>Sign Out</a></li>
+	  			</ul>
+	  		</div>
+
+  		</div>
   	</header>
 
-  	<section>
+
+
+
+
+  	<!-- Display the User Names Here -->
+  	<!-- When Clicked it will show display a modal with the users Timeline -->
+  	<section id='user-bar-wrapper'>
+  		<ul id='user-container'>
+  			<li>1</li>
+  			<li>2</li>
+  			<li>3</li>
+  			<li>4</li>
+  		</ul>
   	</section>
 
 
