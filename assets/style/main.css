@@ -254,4 +254,50 @@ header {
 
 
 
+/************************************************
+
+            Sorting Main Content
+  
+************************************************/
+
+#Main-Content-Wrapper {
+  margin-top: 10px;
+}
+
+
+.User-Bio-Section {
+  height:400px;
+  float:left;
+  background:#FFF;
+  width:25%;
+  margin-top: 50px;
+}
+
+.Main-Content {
+  width:50%;
+  background:red;
+  height:700px;
+  float:left;
+  margin-right: 5%;
+}
+
+.Realtime-Sidebar {
+  width:20%;
+  height:300px;
+  float:left;
+  background-color:blue;
+}
+
+/************************************************
+
+            User Profile
+  
+************************************************/
+
+
+.User-Profile-Wrapper
+
+
+
+
 
