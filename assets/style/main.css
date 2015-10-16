@@ -266,19 +266,21 @@ header {
 
 
 .User-Bio-Section {
-  height:400px;
   float:left;
   background:#FFF;
   width:25%;
   margin-top: 50px;
+  text-align: center;
+  margin-right:2.5%;
+  border:1px solid #E1E8ED
 }
 
 .Main-Content {
   width:50%;
-  background:red;
-  height:700px;
+  background:#FFF;
   float:left;
-  margin-right: 5%;
+  margin-right: 2.5%;
+  border:1px solid #E1E8ED;
 }
 
 .Realtime-Sidebar {
@@ -286,16 +288,105 @@ header {
   height:300px;
   float:left;
   background-color:blue;
+  display:fixed;
 }
 
 /************************************************
 
-            User Profile
+            User Profile Bio
   
 ************************************************/
 
 
-.User-Profile-Wrapper
+.User-Profile-Wrapper {
+  padding:10px;
+  height:250px;
+  box-sizing:inherit;
+  background:#e5e5e5;
+  border-radius:5px;
+  width:250px;
+  margin:0 auto;
+  margin-top:-35px;
+}
+
+.User-Profile-Wrapper img {
+  height: 100%;
+  width:100%;
+}
+
+.User-Profile-Wrapper h2 {
+  
+}
+
+
+
+/************************************************
+
+            Main Content 
+  
+************************************************/
+
+
+.Main-Content-Tweet-List {
+  margin:0;
+  padding:0;
+  list-style-type: none;
+}
+
+.Main-Content-Tweet-List li {
+  display: block;
+  border:1px solid #E1E8ED;
+  margin-top: -1px;
+  padding:20px;
+}
+
+.Main-Content-Tweet-List li:hover {
+  cursor:pointer;
+}
+
+.User-Content {
+  margin-left: 70px;
+}
+
+.User-Content-Header {
+  margin-top: -10px;
+}
+
+.User-Content img {
+  height: 48px;
+  width:48px;
+  margin-left: -70px;
+  border-radius: 5px;
+}
+
+.User-Content h3 {
+  margin-left:15px;
+  display:inline-block;
+}
+
+.User-Content span {
+  margin-left:10px;
+  cursor:pointer; 
+  color:gray;
+}
+
+.User-Content span:hover {
+  text-decoration: underline;
+}
+
+.User-Content small {
+  float: right;
+}
+
+.Main-Content-Tweet-List li .User-Content p {
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: 300;
+    letter-spacing: .01em;
+}
+
+
+
 
 
 
