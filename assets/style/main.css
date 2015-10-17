@@ -180,7 +180,6 @@ header {
 }
 
 #user-container li:hover {
-  /*background-color:#F0F0F0;*/
   background-color: #F8F8F8; 
 }
 
@@ -285,10 +284,14 @@ header {
 
 .Realtime-Sidebar {
   width:20%;
-  height:300px;
-  float:left;
-  background-color:blue;
-  display:fixed;
+  height:150px;
+  background-color:#FFF;
+  border:1px solid #E1E8ED;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  position:fixed;
+  top:40%;
+  right:0;
 }
 
 /************************************************
@@ -383,6 +386,21 @@ header {
     line-height: 32px;
     font-weight: 300;
     letter-spacing: .01em;
+}
+
+.highlight-Tweets {
+  border-top:3px solid #55ACEE !important;
+}
+
+.updateTweets {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-31px;
+  margin-left: -92.5px;
+  background-color:#55ACEE; 
+  padding:20px;
+  color:white;
 }
 
 
