@@ -7,10 +7,6 @@ function toggleName(event){
 
 $(function(){
 
-    var $body = $('body');
-
-    console.log(streams);
-
     // TRAVERSAL IS FASTER THAN SELECTORS
     var userContainer = $('#user-container').children('li');
 
@@ -102,12 +98,15 @@ $(function(){
        // This will show all the tweets that is currently in our home page.
        // Since arrays are objects, we need to make a new copy of the array at its current time,rather than playing with the realtime array.
        var currentTweets = Array.prototype.slice.call(streams.home);
+       console.log('oldTweets',currentTweets);
        var prevIndex = currentTweets.length -1;   // ex: 10
        
        return function(){
 
         var checkCurrentTweets = Array.prototype.slice.call(streams.home);
         var currentIndex = checkCurrentTweets.length -1;  // ex: 100
+
+        console.log('currentTweets',checkCurrentTweets);
 
          if(prevIndex !== currentIndex){
 
@@ -120,31 +119,21 @@ $(function(){
             // To do this I am checking the old tweet array with the new tweets array. Getting those differences and displaying them.
             // NOTE: I COULD ALSO USE THE UNDERSCORE DIFFERENCE AND WITHOUT METHODS.
             var displayTheseTweets = _.last(checkCurrentTweets,difference)
+            console.log('difference',displayTheseTweets);
 
             // Change the outer Exection context's variable environment variable to reference the newly updated one.
             currentTweets = displayTheseTweets;
             prevIndex = displayTheseTweets.length -1;
-         } else if(prevIndex === currentIndex && !$.trim($(".Main-Content-Tweet-List").html())===''){
-          
-            // If the user pressed the refresh button really fast twice. The prevIndex and the currentIndex will ALWAYS be the same number(meaning the same tweets.NO NEW TWEETS WILL BE ADDED BECAUSE THE USER PRESSED THE BUTTON REALLY FAST). In this case we don't have nothing to loop through so we should leave the function right now. If we don't leave or return from this function, then the function will take the current SAME tweets and loop through them again and display the same tweets twice. WE DON'T WANT THAT.
-
-            // However, when the DOM is first loaded the prevIndex will ALWAYS equal to the currentIndex. And because of the return statement, we will then be leaving this entire function without displaying any HTML elements onto the screen. We don't want that. We don't want to leave the function if their is nothing displayed on the screen. So in this case we have to make an exception that if the prevIndex is equal to the currentIndex and their is nothing inside the .Main-Content-Tweet-List selector(this means we are in the beginning stages), then we need to evaluate this statement as false. So since this statement will evaluated to false, we will skip this statement and continue onto the next part of this function which will loop through the array and add all the tweets into the DOM.
-
-            // And now if the tweets are the same it will evaluate as false.
-            // But if the we are in the beginning stages it will evaluate as true
-
-            console.log("i got here");
-
-            return;
-         }
+         } 
 
           // We don't want the while loop to change the old prevIndex variable while looping. So we need to make a new copy
           var index = prevIndex;
+          var start = 0;
 
-          while(0 <= index) {
-            var user =  currentTweets[index].user;
-            var message = currentTweets[index].message;
-            var timeCreated = currentTweets[index].created_at;
+          while(start <= index) {
+            var user =  currentTweets[start].user;
+            var message = currentTweets[start].message;
+            var timeCreated = currentTweets[start].created_at;
             var displayTime = moment(timeCreated).startOf().fromNow();
             var specificTime = moment(timeCreated).format('MMMM Do YYYY');
 
@@ -173,7 +162,7 @@ $(function(){
 
             $(eachTweetWrapper).fadeIn('slow').addClass('highlight-Tweets');      
 
-            index--;
+            start++;
     
           } // closes while loop
        } // closes returned function
