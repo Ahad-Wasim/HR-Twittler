@@ -51,7 +51,7 @@
   	<section id='user-bar-wrapper'>
   		<ul id='user-container'>
 
-  			<li class='clearfix'>
+  			<li class='clearfix' data-toggle="modal" data-target="#myModal">
   				<div class='image-wrapper'>
   					<img src='http://mobileflashtool.com/forum/images/default_avatar.png'/>
   				</div>
@@ -66,7 +66,7 @@
   				<p class='hover-name'>Person 1</p>
   			</li>
 
-  			<li class='clearfix'>
+  			<li class='clearfix' data-toggle="modal" data-target="#myModal">
   				<div class='image-wrapper'>
   					<img src='http://www.socialagent.me/wp-content/uploads/2014/07/avatarDefault.png' />
   				</div>
@@ -80,7 +80,7 @@
   				<p class='hover-name'>Person 2</p>
   			</li>
 
-  			<li class='clearfix'>
+  			<li class='clearfix' data-toggle="modal" data-target="#myModal">
   				<div class='image-wrapper'>
   					<img src='http://assets2.reachoo.com/assets/default-avatar-male-c80e920d2fe4d374fb3b205fd56971f5.png' />
   				</div>
@@ -97,7 +97,7 @@
 
   			</li>
 
-  			<li class='clearfix'>
+  			<li class='clearfix' data-toggle="modal" data-target="#myModal">
   				<div class='image-wrapper'>
   					<img src='http://blog.sfgate.com/stew/wp-content/plugins/author-social-info/default-avatar.png' />
   				</div>
@@ -140,10 +140,34 @@
   	</section>
 
 
+
+  	<!-- User Pofile Modal -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
   	<script type='text/javascript' src='assets/javascript/underscore.js'></script>
     <script type='text/javascript' src="assets/javascript/jquery.js"></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js'></script>
     <script type='text/javascript' src="assets/javascript/data_generator.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='assets/javascript/render.js'></script>
   </body>
 

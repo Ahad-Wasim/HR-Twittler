@@ -113,7 +113,7 @@ $(function(){
 
             // We are creating a new Array that will only contain the tweets that is not in the first array.
             // To do this I am checking the old tweet array with the new tweets array. Getting those differences and displaying them.
-            // NOTE: I COULD ALSO USE UNDERSCORE DIFFERENCE AND WITHOUT METHODS.
+            // NOTE: I COULD ALSO USE THE UNDERSCORE DIFFERENCE AND WITHOUT METHODS.
             var displayTheseTweets = _.last(checkCurrentTweets,difference)
 
             // Change the outer Exection context's variable environment variable to reference the newly updated one.
@@ -150,7 +150,7 @@ $(function(){
             var tempImg = $('<img>').attr({'src':'http://whatsupintheworld.com/wp-content/uploads/2014/06/Facebook-Blank-Photo.jpg'});
             var homeTweetUser = $('<h3>' + user + '</h3>');
             var homeTweetUserLink = $('<span>@' + user  +'</span>');
-            var timePosted = $('<small></small>').text(displayTime);
+            var timePosted = $('<small></small>').text(displayTime).attr({'data-time':timeCreated});
 
             userContentHeader.append(tempImg,[homeTweetUser,homeTweetUserLink,timePosted]);
 
@@ -163,7 +163,6 @@ $(function(){
             $('.Main-Content-Tweet-List').prepend(eachTweetWrapper);
 
             // Change Time
-            // Fix aside Bar
             // Add Modal for each user
 
             $(eachTweetWrapper).fadeIn('slow').addClass('highlight-Tweets');      
@@ -183,6 +182,12 @@ $(function(){
     $('.Main-Content-Tweet-List').on('mouseenter','li',function(){
       $(this).removeClass('highlight-Tweets');
     })
+
+    setInterval(function(){
+      console.log('attempting to change time');
+      var c = $('.User-Content small').data('time');
+      $('.User-Content small').text(moment(c).startOf().fromNow());
+    },45000)
     
 
 
