@@ -61,16 +61,23 @@ $(function(){
 
 
     $('#user-container').on('click','li',function(){
-      // Display the modal for the users timeline
-      // function displayModal 
+
+      var userName = $(this).find('h4').text();
+      var list = streams.users[userName];
+
+      $('.modal-name').text(userName.toUpperCase());
+
+      _.each(list,function(value,index,list){
+
+        var time = value.created_at;
+        var userTag = $('<span class="modal-tag">@' + userName + '</span>')
+        var userTweets = $('<p></p>').text(value.message);
+        var tweetsList = $('<li></li>').append(userTag,userTweets);
+        $('.user-tweets-modal').find('ul').prepend(tweetsList);
+      });
+
     });
 
-    $('.Main-Content-Tweet-List').on('click','.USERNAME',function(){
-        
-        var name = $(this).text().slice(1,this.length);
-
-        // Call the displayModal function like the one above.
-    })
 
 
     $('#user-container').on('mouseenter','li',toggleName);
@@ -85,8 +92,6 @@ $(function(){
     // Thats why a while loop is getting created because we have a permanent number at one point.
     // Whereas if we used a for loop. It we would be checking the length of the array all the time. And the array will always be changing. With the while loop were just sticking with one of the lengths.
     // It starts off from the back of the array because the last element in the array is the latest message
-
-    console.log(streams.home.length);
 
 
 
@@ -140,8 +145,8 @@ $(function(){
             var user =  currentTweets[index].user;
             var message = currentTweets[index].message;
             var timeCreated = currentTweets[index].created_at;
-            // put this code in a function and call a setInterval for every minute
             var displayTime = moment(timeCreated).startOf().fromNow();
+            var specificTime = moment(timeCreated).format('MMMM Do YYYY');
 
 
             // Creating the tweet elements for the home-page.
@@ -155,9 +160,10 @@ $(function(){
             userContentHeader.append(tempImg,[homeTweetUser,homeTweetUserLink,timePosted]);
 
             var messageElement = $('<p></p>').text(message);
+            var specificTime = $('<small></small>').addClass('specific-time').text(specificTime);
 
-            var userContentWrapper = $('<div></div>').attr({'class':'User-Content','data-user':user});
-            userContentWrapper.append(userContentHeader,messageElement);
+            var userContentWrapper = $('<div></div>').attr({'class':'User-Content clearfix','data-user':user});
+            userContentWrapper.append(userContentHeader,messageElement,specificTime);
 
             var eachTweetWrapper = $('<li></li>').append(userContentWrapper).css({'display':'none'});
             $('.Main-Content-Tweet-List').prepend(eachTweetWrapper);

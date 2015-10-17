@@ -271,7 +271,7 @@ header {
   margin-top: 50px;
   text-align: center;
   margin-right:2.5%;
-  border:1px solid #E1E8ED
+  border:1px solid #E1E8ED;
 }
 
 .Main-Content {
@@ -381,16 +381,30 @@ header {
   float: right;
 }
 
-.Main-Content-Tweet-List li .User-Content p {
+.Main-Content-Tweet-List li .User-Content p,
+.user-tweets-modal ul li p  {
     font-size: 26px;
     line-height: 32px;
     font-weight: 300;
     letter-spacing: .01em;
 }
 
-.highlight-Tweets {
-  border-top:3px solid #55ACEE !important;
+small.specific-time {
+  display:inline-block;
+  padding-top:15px;
+  float:left;
 }
+
+.highlight-Tweets {
+  background-color:#F5F5F5;
+}
+
+
+/************************************************
+
+            Aside New Tweets Button
+  
+************************************************/
 
 .updateTweets {
   position:absolute;
@@ -402,6 +416,38 @@ header {
   padding:20px;
   color:white;
 }
+
+
+
+
+
+/************************************************
+
+                    Modal
+  
+************************************************/
+
+.user-tweets-modal ul {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+}
+
+
+.user-tweets-modal ul li{
+  margin-top: -1px;
+  border:1px solid #E1E8ED;
+  padding-bottom: 18px;
+}
+
+.modal-tag {
+  font-size: 1.15em;
+  color:#767373;
+}
+
+
+
+
 
 
 
