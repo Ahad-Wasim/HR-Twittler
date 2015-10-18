@@ -98,15 +98,14 @@ $(function(){
        // This will show all the tweets that is currently in our home page.
        // Since arrays are objects, we need to make a new copy of the array at its current time,rather than playing with the realtime array.
        var currentTweets = Array.prototype.slice.call(streams.home);
-       console.log('oldTweets',currentTweets);
-       var prevIndex = currentTweets.length -1;  
+       var prevIndex = currentTweets.length -1;
+       var innerContent = false;  
        
        return function(){
 
         var checkCurrentTweets = Array.prototype.slice.call(streams.home);
+        console.log('# of Tweets NOW:',checkCurrentTweets.length);
         var currentIndex = checkCurrentTweets.length -1;  
-
-        console.log('currentTweets',checkCurrentTweets);
 
          if(prevIndex !== currentIndex){
 
@@ -123,7 +122,10 @@ $(function(){
 
             // Change the outer Exection context's variable environment variable to reference the newly updated one.
             prevIndex = displayTheseTweets.length -1;
-         } else if(prevIndex === currentIndex && !$.trim($(".Main-Content-Tweet-List").html())===''){
+         } else if(prevIndex === currentIndex && innerContent){
+
+            console.log('Your pressing the button too fast');
+
             return;
          }
 
@@ -131,6 +133,7 @@ $(function(){
 
 
           // We don't want the while loop to change the old prevIndex variable while looping. So we need to make a new copy
+          innerContent = true;
           var index = prevIndex;
           var start = 0;
 
