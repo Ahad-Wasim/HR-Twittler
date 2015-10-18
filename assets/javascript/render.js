@@ -1,11 +1,10 @@
-// Load this code even before the DOM, it won't affect the DOM elemenents.
-function toggleName(event){
-  $(this).find('.hover-name').slideToggle(200);  
-}
-
-
-
 $(function(){
+
+    // Load this code even before the DOM, it won't affect the DOM elemenents.
+    function toggleName(event){
+      $(this).find('.hover-name').slideToggle(200);  
+    }
+
 
     // TRAVERSAL IS FASTER THAN SELECTORS
     var userContainer = $('#user-container').children('li');
