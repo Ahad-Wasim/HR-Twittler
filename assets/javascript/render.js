@@ -99,12 +99,12 @@ $(function(){
        // Since arrays are objects, we need to make a new copy of the array at its current time,rather than playing with the realtime array.
        var currentTweets = Array.prototype.slice.call(streams.home);
        console.log('oldTweets',currentTweets);
-       var prevIndex = currentTweets.length -1;   // ex: 10
+       var prevIndex = currentTweets.length -1;  
        
        return function(){
 
         var checkCurrentTweets = Array.prototype.slice.call(streams.home);
-        var currentIndex = checkCurrentTweets.length -1;  // ex: 100
+        var currentIndex = checkCurrentTweets.length -1;  
 
         console.log('currentTweets',checkCurrentTweets);
 
@@ -113,7 +113,7 @@ $(function(){
             // This means more tweets have been loaded 
             // Use underscore last right here.
 
-            var difference = currentIndex - prevIndex  // ex: 90
+            var difference = currentIndex - prevIndex  
 
             // We are creating a new Array that will only contain the tweets that is not in the first array.
             // To do this I am checking the old tweet array with the new tweets array. Getting those differences and displaying them.
@@ -122,13 +122,23 @@ $(function(){
             console.log('difference',displayTheseTweets);
 
             // Change the outer Exection context's variable environment variable to reference the newly updated one.
-            currentTweets = displayTheseTweets;
             prevIndex = displayTheseTweets.length -1;
-         } 
+         } else if(prevIndex === currentIndex && !$.trim($(".Main-Content-Tweet-List").html())===''){
+            return;
+         }
+
+
+
 
           // We don't want the while loop to change the old prevIndex variable while looping. So we need to make a new copy
           var index = prevIndex;
           var start = 0;
+
+          if(displayTheseTweets !== undefined) {
+            currentTweets = displayTheseTweets;
+          } 
+
+
 
           while(start <= index) {
             var user =  currentTweets[start].user;
@@ -165,6 +175,8 @@ $(function(){
             start++;
     
           } // closes while loop
+          currentTweets = checkCurrentTweets;
+          prevIndex = checkCurrentTweets.length -1;
        } // closes returned function
     } // closes outer function
 
@@ -172,7 +184,15 @@ $(function(){
     var checkTweets = updateRealTimeTweets()
     checkTweets();
 
-    $("aside.Realtime-Sidebar").on('click','.updateTweets',checkTweets);
+    $("aside.Realtime-Sidebar").on('click','.updateTweets',function(){
+
+      checkTweets();
+
+      
+    });
+
+
+
 
     $('.Main-Content-Tweet-List').on('mouseenter','li',function(){
       $(this).removeClass('highlight-Tweets');
@@ -184,6 +204,5 @@ $(function(){
       $('.User-Content small').text(moment(c).startOf().fromNow());
     },45000)
     
-
 
 });
