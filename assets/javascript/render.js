@@ -156,7 +156,7 @@ $(function(){
             var tempImg = $('<img>').attr({'src':'http://whatsupintheworld.com/wp-content/uploads/2014/06/Facebook-Blank-Photo.jpg'});
             var homeTweetUser = $('<h3>' + user + '</h3>');
             var homeTweetUserLink = $('<span>@' + user  +'</span>');
-            var timePosted = $('<small></small>').text(displayTime).attr({'data-time':timeCreated});
+            var timePosted = $('<small></small>').text(displayTime).attr({'data-time':timeCreated,'class':'time-ago'});
 
             userContentHeader.append(tempImg,[homeTweetUser,homeTweetUserLink,timePosted]);
 
@@ -201,9 +201,8 @@ $(function(){
     })
 
     setInterval(function(){
-      console.log('attempting to change time');
-      var c = $('.User-Content small').data('time');
-      $('.User-Content small').text(moment(c).startOf().fromNow());
+      var c = $('.User-Content-Header small').data('time');
+      $('.time-ago').text(moment(c).startOf().fromNow());
     },45000)
     
 
